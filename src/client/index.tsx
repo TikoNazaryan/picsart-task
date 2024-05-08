@@ -9,7 +9,19 @@ import { thunk } from "redux-thunk";
 import { Provider } from "react-redux";
 import reducers from "./store";
 
-const store = createStore(reducers, {}, applyMiddleware(thunk));
+declare global {
+  interface Window {
+    __PRELOADED_STATE__: any;
+  }
+}
+
+const store = createStore(
+  reducers,
+  window.__PRELOADED_STATE__,
+  applyMiddleware(thunk)
+);
+delete window.__PRELOADED_STATE__;
+
 const rootNode = document.getElementById("root");
 
 if (rootNode) {

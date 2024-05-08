@@ -14,6 +14,8 @@ import getRoutes from "./client/routes";
 import { Provider } from "react-redux";
 import createStore from "./helpers/createStore";
 
+import renderer from "./helpers/renderer";
+
 const app = express();
 
 app.use(express.static("public"));
@@ -25,14 +27,16 @@ app.get("*", async (req, res) => {
   const fetchRequest = createFetchRequest(req, res);
   const context = (await handler.query(fetchRequest)) as StaticHandlerContext;
   const router = createStaticRouter(handler.dataRoutes, context);
+  const preloadedState = store.getState();
 
-  const html = renderToString(
+  const html = renderer(
     <Provider store={store}>
       <StaticRouterProvider router={router} context={context} />
-    </Provider>
+    </Provider>,
+    preloadedState
   );
 
-  res.send("<!DOCTYPE html>" + html);
+  res.send(html);
 });
 
 app.listen(3000, () => {

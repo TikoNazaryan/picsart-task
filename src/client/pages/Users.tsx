@@ -1,4 +1,5 @@
 import React from "react";
+import { StoreWithActions } from "../store/types";
 
 const Users = () => {
   return (
@@ -8,4 +9,5 @@ const Users = () => {
   );
 };
 
+export const loader = async (store: StoreWithActions) => {};
 export default Users;

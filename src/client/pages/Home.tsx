@@ -7,14 +7,19 @@ import { StoreWithActions } from "../store/types";
 const Home = () => {
   const { data: tasks } = useSelector(selectTasks);
 
-  if (!tasks) return <>Loading...</>;
+  if (!tasks) return <div>Loading...</div>;
+
+  const handleClick = () => {
+    console.log(tasks);
+  };
 
   return (
     <div>
       <div>Tasks</div>
+      <button onClick={handleClick}>Click me</button>
       <ul>
-        {tasks.map((task) => {
-          return <li>{task.title}</li>;
+        {tasks.slice(0, 5).map((task) => {
+          return <li key={task.id}>{task.title}</li>;
         })}
       </ul>
     </div>
@@ -22,7 +27,6 @@ const Home = () => {
 };
 
 export const loader = async (store: StoreWithActions) => {
-  // @ts-ignore
   await store.dispatch(fetchTasks());
 };
 

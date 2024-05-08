@@ -1,5 +1,6 @@
 import React from "react";
-import Home, { loader } from "./components/Home";
+import Home, { loader as homeLoader } from "./pages/Home";
+import Users, { loader as usersLoader } from "./pages/Users";
 import { StoreWithActions } from "./store/types";
 
 const getRoutes = (store: StoreWithActions) => {
@@ -7,10 +8,18 @@ const getRoutes = (store: StoreWithActions) => {
     {
       path: "/",
       loader: async () => {
-        await loader(store);
+        await homeLoader(store);
         return null;
       },
       Component: Home,
+    },
+    {
+      path: "/users",
+      loader: async () => {
+        await usersLoader(store);
+        return null;
+      },
+      Component: Users,
     },
   ];
 };
