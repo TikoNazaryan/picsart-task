@@ -10,6 +10,7 @@ export default (JSXElement: ReactNode, preloadedState: IGlobalState) => {
     <html>
         <head>
             <title>Picsart test task</title>
+            <link rel="stylesheet" href="global.css">
         </head>
         <body>
             <div id="root">${content}</div>
