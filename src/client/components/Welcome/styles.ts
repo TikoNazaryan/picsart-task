@@ -8,12 +8,12 @@ export const Main = styled.h1`
   font-size: 64px;
   text-align: center;
   font-weight: 400;
-  color: ${(props) => props.theme.color};
+  color: ${(props) => props.theme.secondary};
 `;
 
 export const Typetext = styled.div`
   width: 50%;
-  height: 300px;
+  height: 200px;
   margin: auto;
-  color: ${(props) => props.theme.color};
+  color: ${(props) => props.theme.secondary};
 `;

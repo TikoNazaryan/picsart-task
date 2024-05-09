@@ -18,3 +18,5 @@ export type StoreWithActions = Store<
 > & {
   dispatch: ThunkDispatch<any, undefined, AnyAction>;
 };
+
+export type AppDispatch = ThunkDispatch<IGlobalState, any, AnyAction>;

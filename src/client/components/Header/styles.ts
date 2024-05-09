@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 
 export const Logo = styled.div`
   font-size: 32px;
-  color: ${(props) => props.theme.color};
+  color: ${(props) => props.theme.secondary};
 `;
 
 export const Menu = styled.div`
@@ -25,7 +25,7 @@ export const MenuItem = styled(NavLink)`
   text-decoration: none;
   color: black;
   font-size: 22px;
-  color: ${(props) => props.theme.color};
+  color: ${(props) => props.theme.secondary};
 
   &.active {
     font-weight: bold;
