@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -22,6 +23,18 @@ export const PageButton = styled.button<{ active: boolean }>`
   padding: 6px 8px;
   font-size: 18px;
   font-weight: ${(props) => (props.active ? "bold" : "normal")};
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const DetailsButton = styled(Link)`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: ${(props) => props.theme.success};
+  padding: 0px 18px;
 
   &:hover {
     text-decoration: underline;

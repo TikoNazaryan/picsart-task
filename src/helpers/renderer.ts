@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { renderToString } from "react-dom/server";
 import { IGlobalState } from "../client/store/types";
+const HOST = "http://localhost:3000/";
 
 export default (JSXElement: ReactNode, preloadedState: IGlobalState) => {
   const content = renderToString(JSXElement);
@@ -10,7 +11,7 @@ export default (JSXElement: ReactNode, preloadedState: IGlobalState) => {
     <html>
         <head>
             <title>Picsart test task</title>
-            <link rel="stylesheet" href="global.css">
+            <link rel="stylesheet" href="${HOST}global.css">
         </head>
         <body>
             <div id="root">${content}</div>
@@ -21,7 +22,7 @@ export default (JSXElement: ReactNode, preloadedState: IGlobalState) => {
                 preloadedState
               ).replace(/</g, "\\u003c")}
             </script>
-            <script src="bundle.js"></script>
+            <script src="${HOST}bundle.js"></script>
         </body>
     </html>
   `;

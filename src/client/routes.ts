@@ -1,6 +1,7 @@
 import React from "react";
 import Home, { loader as homeLoader } from "./pages/Home";
 import Users, { loader as usersLoader } from "./pages/Users";
+import UserDetails, { loader as usersDetails } from "./pages/UserDetails";
 import { StoreWithActions } from "./store/types";
 
 const getRoutes = (store: StoreWithActions) => {
@@ -20,6 +21,14 @@ const getRoutes = (store: StoreWithActions) => {
         return null;
       },
       Component: Users,
+    },
+    {
+      path: "/users/:userId",
+      loader: async () => {
+        await usersDetails(store);
+        return null;
+      },
+      Component: UserDetails,
     },
   ];
 };

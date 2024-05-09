@@ -1,5 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Wrapper, SearchInput, PageButton, Table, SortableTh } from "./styles";
+import {
+  Wrapper,
+  SearchInput,
+  PageButton,
+  Table,
+  SortableTh,
+  DetailsButton,
+} from "./styles";
 import { useSelector } from "react-redux";
 import { selectUsers } from "../../store/users/selectors";
 import { IUser } from "../../store/users/types";
@@ -140,6 +147,7 @@ const UsersTable: React.FC<IUsersTabel> = () => {
           >
             Age
           </SortableTh>
+          <th>Actions</th>
         </tr>
         {filteredUsers.map(({ id, name, email, age }) => (
           <tr>
@@ -147,6 +155,11 @@ const UsersTable: React.FC<IUsersTabel> = () => {
             <td>{name}</td>
             <td>{email}</td>
             <td>{age}</td>
+            <td>
+              <DetailsButton to={`${id}`} relative="path">
+                Details
+              </DetailsButton>
+            </td>
           </tr>
         ))}
       </Table>
