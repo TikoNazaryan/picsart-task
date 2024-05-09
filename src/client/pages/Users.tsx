@@ -1,13 +1,12 @@
 import React from "react";
 import { StoreWithActions } from "../store/types";
 import Layout from "../components/Layout";
+import UsersTable from "../components/UsersTable";
 
 const Users = () => {
   return (
     <Layout>
-      <div>
-        <div>Users</div>
-      </div>
+      <UsersTable />
     </Layout>
   );
 };
